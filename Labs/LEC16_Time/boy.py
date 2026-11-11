@@ -71,13 +71,13 @@ class Run:
         boy.frame = 0
 
     def do(self, boy):
-        boy.frame = (boy.frame + 1) % 8
+        boy.frame = (boy.frame + RUN_FRAMES_PER_SECOND * game_framework.frame_time) % 8
         boy.x += boy.dir * RUN_SPEED_PPS * game_framework.frame_time
         boy.x = max(25, min(get_canvas_width() - 25, boy.x))
 
     def draw(self, boy):
         row = 100 if boy.face_dir == 1 else 0
-        boy.image.clip_draw(boy.frame * 100, row, 100, 100, boy.x, boy.y)
+        boy.image.clip_draw(int(boy.frame) * boy.frame * 100, row, 100, 100, boy.x, boy.y)
 
     def space(self, boy):
         boy.fire_ball()
