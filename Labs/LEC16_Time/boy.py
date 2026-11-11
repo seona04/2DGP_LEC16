@@ -16,7 +16,11 @@ RUN_SPEED_KMPH = 7.0  # Km / Hour light jogging speed
 RUN_SPEED_MPM = (RUN_SPEED_KMPH * 1000.0 / 60.0)
 RUN_SPEED_MPS = (RUN_SPEED_MPM / 60.0)
 RUN_SPEED_PPS = (RUN_SPEED_MPS * PIXEL_PER_METER)
+STRIDE_LENGTH_M = 0.8 #보폭 길이
+RUN_FRAMES_PER_STRIDE = 5 #보폭당 프레임 수
 
+# 프레임 증가 속도, 즉 1초당 몇개 프레임을 증가시켜야 하는가?
+RUN_FRAMES_PER_SECOND = RUN_SPEED_MPS / STRIDE_LENGTH_M * RUN_FRAMES_PER_STRIDE
 
 class Idle:
     def enter(self, boy):
