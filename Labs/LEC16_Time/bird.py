@@ -3,6 +3,8 @@ from pathlib import Path
 
 from pico2d import load_image
 
+import game_framework
+
 
 SHEET_WIDTH = 918
 SHEET_HEIGHT = 506
@@ -55,7 +57,9 @@ class Bird:
             raise ValueError('direction must be -1 or 1')
         self.direction = direction
 
-    def update(self, frame_time):
+    def update(self, frame_time=None):
+        if frame_time is None:
+            frame_time = game_framework.frame_time
         self.elapsed += frame_time
         self.frame = (
             self.frame + FRAMES_PER_SECOND * frame_time
